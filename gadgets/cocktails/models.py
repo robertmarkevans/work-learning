@@ -1,12 +1,11 @@
 from django.db import models
 
-
 class Category(models.Model):
     category = models.CharField(max_length=40, null=False, blank=False)
 
     def __str__(self):
         return self.category
-        
+
 class Ingredient(models.Model):    
     name = models.CharField(max_length=50, null=False, blank=False)
     alcohol_percentage = models.IntegerField()
@@ -29,7 +28,3 @@ class Cocktail(models.Model):
     class Meta:
         ordering = ('name',)
     
-
-
-
-
