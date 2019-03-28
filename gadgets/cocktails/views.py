@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from gadgets.cocktails.serializers import UserSerializer, GroupSerializer
-
+from .serializers import UserSerializer, GroupSerializer, \
+     IngredientSerializer, CategorySerializer, CocktailSerializer
+from .models import Category, Cocktail, Ingredient
 
 def index(request):
     return HttpResponse("Hello, world. You're at the cocktails index.")
@@ -22,3 +23,18 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+class IngredientViewSet(viewsets.ModelViewSet):
+    queryset = Ingredient.objects.all()
+    serializer_class = IngredientSerializer
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+
+class CocktailViewSet(viewsets.ModelViewSet):
+    queryset = Cocktail.objects.all()
+    serializer_class = CocktailSerializer
